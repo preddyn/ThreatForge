@@ -26,7 +26,8 @@ Given a YAML threat model with risks and mitigations, ThreatForge extracts a spe
 ```bash
 git clone https://github.com/preddyn/ThreatForge.git
 cd ThreatForge
-pip install -r requirements.txt
+```
+---
 ## 🚀 Quick Start
 
 ```bash
@@ -38,7 +39,9 @@ export OPENAI_API_KEY="sk-..."
 
 # 3. Run
 python threatforge.py examples/sampleTM.yml M-Auth-001 --output tests/test_auth_security.py
+```
 
+---
 ## 📖 Usage
 
 ```bash
@@ -52,7 +55,8 @@ python threatforge.py <threat_model.yaml> <mitigation_id> [options]
 | `--framework`| Testing framework                        | `pytest`      |
 | `--model`    | OpenAI model (e.g. `gpt-4o-mini`)        | `gpt-4o`      |
 | `--output`   | Save generated tests to file             | (stdout only) |
-
+```
+---
 ## 🛠 Example Commands
 
 ```bash
@@ -64,3 +68,4 @@ python threatforge.py examples/sampleTM.yml M-Auth-001 --language=javascript --f
 
 # Java + JUnit with cheaper model
 python threatforge.py examples/sampleTM.yml M-Auth-001 --language=java --framework=junit --model=gpt-4o-mini
+```
