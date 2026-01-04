@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+pip-wheel-metadata/
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Generated tests (optional: keep or ignore)
+tests/*.py
+!tests/__init__.py
+
+# OS
+.DS_Store
+Thumbs.db

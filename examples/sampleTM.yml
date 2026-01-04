@@ -1,0 +1,24 @@
+mitigations:
+  - id: M-Auth-001
+    description: "JWT tokens must use RS256 algorithm and be validated against a strict allowlist of algorithms."
+    related_risks: ["R-Auth-001", "R-Auth-002"]
+
+  - id: M-Input-001
+    description: "All user inputs must be validated against a strict schema and sanitized."
+    related_risks: ["R-Injection-001"]
+
+risks:
+  - id: R-Auth-001
+    description: "Algorithm confusion attack"
+    mechanism: "Attacker sets alg to 'none' or HS256 to bypass verification"
+    impact: "Complete authentication bypass"
+
+  - id: R-Auth-002
+    description: "Token forgery"
+    mechanism: "Crafting tokens with invalid or weak signatures"
+    impact: "Unauthorized access"
+
+  - id: R-Injection-001
+    description: "SQL/Command injection via unsanitized input"
+    mechanism: "Malicious payload in user-controlled fields"
+    impact: "Data leakage or RCE"
