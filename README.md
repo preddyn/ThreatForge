@@ -17,11 +17,16 @@ Given a YAML threat model with risks and mitigations, ThreatForge extracts a spe
 - Clean CLI with file output option
 - Secure: no hardcoded keys
 
-Defaults: **Python + pytest**  
-Supported: JavaScript/Jest, Java/JUnit, Go/testing, etc.
+**Defaults:** Python + pytest  
+**Supported:** JavaScript/Jest, Java/JUnit, Go/testing, etc.
 
 ---
+## 📦 Installation
 
+```bash
+git clone https://github.com/preddyn/ThreatForge.git
+cd ThreatForge
+pip install -r requirements.txt
 ## 🚀 Quick Start
 
 ```bash
@@ -33,69 +38,25 @@ export OPENAI_API_KEY="sk-..."
 
 # 3. Run
 python threatforge.py examples/sampleTM.yml M-Auth-001 --output tests/test_auth_security.py
-Generated tests are printed and saved to file.
 
-📦 Installation
-Bashgit clone https://github.com/yourusername/ThreatForge.git
-cd ThreatForge
-pip install -r requirements.txt
+## 📖 Usage
 
-📖 Usage
-Bashpython threatforge.py <threat_model.yaml> <mitigation_id> [options]
-Options
+```bash
+python threatforge.py <threat_model.yaml> <mitigation_id> [options]
 
+### Options
 
+| Flag         | Description                              | Default       |
+|--------------|------------------------------------------|---------------|
+| `--language` | Target programming language              | `python`      |
+| `--framework`| Testing framework                        | `pytest`      |
+| `--model`    | OpenAI model (e.g. `gpt-4o-mini`)        | `gpt-4o`      |
+| `--output`   | Save generated tests to file             | (stdout only) |
 
+## 🛠 Example Commands
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-FlagDescriptionDefault--languageTarget programming languagepython--frameworkTesting frameworkpytest--modelOpenAI model (e.g. gpt-4o-mini)gpt-4o--outputSave generated tests to file(stdout only)
-Example Threat Model (examples/sampleTM.yml)
-YAMLmitigations:
-  - id: M-Auth-001
-    description: "JWT tokens must use RS256 algorithm and be validated against a strict allowlist."
-    related_risks: ["R-Auth-001", "R-Auth-002"]
-
-  - id: M-Input-001
-    description: "All user inputs must be validated against a strict schema and sanitized."
-    related_risks: ["R-Injection-001"]
-
-risks:
-  - id: R-Auth-001
-    description: "Algorithm confusion attack (none/HS256 bypass)"
-    mechanism: "Attacker switches alg header to unsupported value"
-    impact: "Unauthorized access"
-
-  - id: R-Auth-002
-    description: "Token forgery with weak keys"
-    mechanism: "Craft token with invalid signature"
-    impact: "Privilege escalation"
-Example Commands
-Bash# Python + pytest (default)
+```bash
+# Python + pytest (default)
 python threatforge.py examples/sampleTM.yml M-Auth-001 --output tests/test_jwt_security.py
 
 # JavaScript + Jest
